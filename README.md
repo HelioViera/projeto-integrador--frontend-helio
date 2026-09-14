@@ -1,2 +1,3 @@
 # projeto-integrador--frontend-helio
 Este projeto consiste no desenvolvimento de um site para uma lanchonete fictícia "Burgue &amp; Pizza". Com objetivo de mostrar um cardápio completo e um site de pedidos fluidos.
+O objetivo da página é apresentar o cardápio completo de hambúrgueres artesanais e bebidas, permitindo que os clientes consultem os preços e ingredientes de forma rápida e prática. A aplicação busca resolver a falta de um catálogo online simples e acessível para os clientes da região.
