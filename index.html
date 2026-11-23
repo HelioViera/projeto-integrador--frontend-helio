@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burger Craft - Hamburgueria Artesanal</title>
+  <!-- CSS externo (Aula 06) -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Scripts carregados com defer (Aulas 09, 11 e 12) -->
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <header id="cabecalho-principal">
+    <h1>🍔 Burger Craft</h1>
+    <!-- Botão hambúrguer acessível (Aulas 08 e 12) -->
+    <button type="button" class="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-lista">
+      ☰
+    </button>
+    <nav>
+      <ul id="menu-lista">
+        <li><a href="#sobre" class="ativo">Nossa História</a></li>
+        <!-- Item com dropdown via :hover (Aula 08) -->
+        <li class="item-dropdown">
+          <a href="#cardapio">Cardápio ▾</a>
+          <ul class="submenu">
+            <li><a href="#cardapio">Clássicos</a></li>
+            <li><a href="#cardapio">Smash Burgers</a></li>
+            <li><a href="#cardapio">Vegetarianos</a></li>
+          </ul>
+        </li>
+        <li><a href="#preparo">Preparo</a></li>
+        <li><a href="#pedido">Fazer Pedido</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Seção 1: Sobre, Lista, Tabela, Imagem e Link Externo (Aulas 02 e 03) -->
+    <section id="sobre" class="secao-card">
+      <h2>O Melhor Hambúrguer Artesanal</h2>
+      <p>Pães selados na manteiga, carnes suculentas grelhadas na brasa e queijo derretido de verdade.</p>
+
+      <img src="assets/images/burger.jpg" alt="Hambúrguer artesanal suculento com queijo cheddar derretido e bacon crocante" style="max-width: 100%; border-radius: 8px; margin: 1rem 0;">
+
+      <h3>Nossos Diferenciais</h3>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Blend exclusivo de carnes frescas moídas diariamente</li>
+        <li>Pão brioche artesanal selado na chapa</li>
+        <li>Molhos defumados feitos na casa</li>
+      </ul>
+
+      <h3>Horários de Funcionamento</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Dia da Semana</th>
+            <th>Horário</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Terça a Quinta</td>
+            <td>18h00 às 23h00</td>
+          </tr>
+          <tr>
+            <td>Sexta a Domingo</td>
+            <td>18h00 às 00h30</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Conheça mais sobre a cultura do churrasco americano no 
+        <a href="https://www.seriouseats.com" target="_blank" rel="noopener noreferrer" style="color: #ff9f1c;">Serious Eats</a>.
+      </p>
+    </section>
+
+    <!-- Seção 2: Mídia com Fallback (Aula 04) -->
+    <section id="preparo" class="secao-card">
+      <h2>Bastidores da Chapa</h2>
+      <!-- preload="metadata" escolhido pois o vídeo está abaixo da dobra, carregando apenas duração e dimensões sem gastar banda desnecessária (Aula 04) -->
+      <video controls preload="metadata" poster="assets/images/burger.jpg" style="width: 100%; border-radius: 8px;">
+        <source src="assets/media/preparo.webm" type="video/webm">
+        <source src="assets/media/preparo.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução de vídeos HTML5.
+      </video>
+    </section>
+
+    <!-- Seção 3: Cardápio Interativo (Aulas 11 e 12) -->
+    <section id="cardapio" class="secao-card">
+      <h2>Nosso Cardápio Interativo</h2>
+
+      <div class="ferramentas">
+        <div class="campo" style="margin-bottom: 0;">
+          <label for="campo-busca">Buscar hambúrguer:</label>
+          <input type="search" id="campo-busca" placeholder="Ex: Smash, Bacon..." autocomplete="off">
+        </div>
+
+        <div class="campo" style="margin-bottom: 0;">
+          <label for="filtro-categoria">Categoria:</label>
+          <select id="filtro-categoria">
+            <option value="">Todas</option>
+            <option value="Clássico">Clássico</option>
+            <option value="Smash">Smash</option>
+            <option value="Frango">Frango</option>
+            <option value="Vegetariano">Vegetariano</option>
+          </select>
+        </div>
+
+        <button type="button" id="btn-filtro-selecionados" class="btn-controle" aria-pressed="false">
+          Só Selecionados
+        </button>
+      </div>
+
+      <!-- Resumo atualizado dinamicamente (Aulas 11 e 12) -->
+      <p id="resumo-pedido" class="painel-resumo" aria-live="polite"></p>
+
+      <!-- Lista desenhada via JS -->
+      <ul id="lista-cardapio" class="grade-burgers"></ul>
+
+      <!-- Controle com aria-expanded + Escape (Aula 12) -->
+      <button type="button" id="btn-abrir-cadastro" class="btn-controle" aria-expanded="false" aria-controls="form-novo-burger">
+        + Sugerir Novo Hambúrguer
+      </button>
+
+      <form id="form-novo-burger" hidden style="margin-top: 1rem;">
+        <fieldset>
+          <legend>Novo Hambúrguer (Esc para fechar)</legend>
+          <div class="campo">
+            <label for="novo-nome">Nome do Hambúrguer:</label>
+            <input type="text" id="novo-nome" placeholder="Ex: Monster Cheddar" required>
+          </div>
+          <div class="campo">
+            <label for="nova-categoria">Categoria:</label>
+            <select id="nova-categoria">
+              <option value="Clássico">Clássico</option>
+              <option value="Smash">Smash</option>
+              <option value="Frango">Frango</option>
+              <option value="Vegetariano">Vegetariano</option>
+            </select>
+          </div>
+          <div class="campo">
+            <label for="novo-preco">Preço (R$):</label>
+            <input type="number" id="novo-preco" step="0.50" min="10" value="32.00" required>
+          </div>
+          <button type="submit" class="botao">Adicionar ao Cardápio</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- Seção 4: Formulário Semântico (Aula 03) -->
+    <section id="pedido" class="secao-card">
+      <h2>Finalizar Pedido / Reserva</h2>
+      <form action="#" method="POST">
+        <fieldset>
+          <legend>Dados do Cliente</legend>
+
+          <div class="campo">
+            <label for="nome-cliente">Nome do Cliente:</label>
+            <input type="text" id="nome-cliente" name="nome" placeholder="Ex: João Silva" required>
+          </div>
+
+          <div class="campo">
+            <label for="email-cliente">E-mail para Confirmação:</label>
+            <input type="email" id="email-cliente" name="email" placeholder="cliente@email.com" required>
+          </div>
+
+          <div class="campo">
+            <label for="telefone-cliente">WhatsApp (DDD + Número):</label>
+            <input type="tel" id="telefone-cliente" name="telefone" pattern="[0-9]{11}" placeholder="11999998888">
+          </div>
+
+          <div class="campo">
+            <label for="qtd-burgers">Quantidade de Pessoas (Reserva):</label>
+            <input type="number" id="qtd-burgers" name="quantidade" min="1" max="15" value="2">
+          </div>
+
+          <fieldset>
+            <legend>Forma de Atendimento:</legend>
+            <div class="grupo-radio">
+              <label for="tipo-delivery" class="opcao-radio">
+                <input type="radio" id="tipo-delivery" name="entrega" value="delivery" checked>
+                Delivery (Entrega)
+              </label>
+              <label for="tipo-retirada" class="opcao-radio">
+                <input type="radio" id="tipo-retirada" name="entrega" value="retirada">
+                Retirar no Balcão
+              </label>
+            </div>
+          </fieldset>
+        </fieldset>
+        <button type="submit" class="botao">Confirmar Pedido 🍔</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 - Burger Craft Artesanal. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
