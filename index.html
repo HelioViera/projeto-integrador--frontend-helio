@@ -3,196 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Burger Craft - Hamburgueria Artesanal</title>
-  <!-- CSS externo (Aula 06) -->
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Scripts carregados com defer (Aulas 09, 11 e 12) -->
-  <script src="js/script.js" defer></script>
+  <title>Burger Craft - Cardápio</title>
+  <!-- Link para o CSS separado -->
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <header id="cabecalho-principal">
-    <h1>🍔 Burger Craft</h1>
-    <!-- Botão hambúrguer acessível (Aulas 08 e 12) -->
-    <button type="button" class="menu-hamburguer" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-lista">
-      ☰
-    </button>
+  <header>
+    <h1><a href="index.html" class="logo">🍔 Burger Craft</a></h1>
     <nav>
-      <ul id="menu-lista">
-        <li><a href="#sobre" class="ativo">Nossa História</a></li>
-        <!-- Item com dropdown via :hover (Aula 08) -->
-        <li class="item-dropdown">
-          <a href="#cardapio">Cardápio ▾</a>
-          <ul class="submenu">
-            <li><a href="#cardapio">Clássicos</a></li>
-            <li><a href="#cardapio">Smash Burgers</a></li>
-            <li><a href="#cardapio">Vegetarianos</a></li>
-          </ul>
-        </li>
-        <li><a href="#preparo">Preparo</a></li>
-        <li><a href="#pedido">Fazer Pedido</a></li>
+      <ul>
+        <li><a href="index.html" class="ativo">Cardápio</a></li>
+        <li><a href="carrinho.html">Carrinho (1)</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <!-- Seção 1: Sobre, Lista, Tabela, Imagem e Link Externo (Aulas 02 e 03) -->
-    <section id="sobre" class="secao-card">
-      <h2>O Melhor Hambúrguer Artesanal</h2>
-      <p>Pães selados na manteiga, carnes suculentas grelhadas na brasa e queijo derretido de verdade.</p>
+    <section>
+      <h2>Nosso Cardápio Artesanal</h2>
+      <p style="margin-bottom: 20px;">Escolha o seu lanche abaixo, personalize os adicionais e finalize seu pedido.</p>
 
-      <img src="assets/images/burger.jpg" alt="Hambúrguer artesanal suculento com queijo cheddar derretido e bacon crocante" style="max-width: 100%; border-radius: 8px; margin: 1rem 0;">
+      <div class="grid-cardapio">
+        
+        <!-- Produto 1 -->
+        <article class="card-produto">
+          <div>
+            <img src="assets/images/imagem.jpg" alt="Classic Burger">
+            <h3>Classic Burger</h3>
+            <p>Pão brioche selado na manteiga, hambúrguer 180g na brasa, queijo cheddar e bacon crocante.</p>
+          </div>
+          <div>
+            <span class="preco">R$ 32,90</span>
+            <!-- Lista suspensa nativa em HTML -->
+            <details class="opcoes-lanche">
+              <summary>Comprar / Personalizar</summary>
+              <form action="carrinho.html" method="GET">
+                <div class="lista-adicionais">
+                  <strong>Escolha os adicionais:</strong>
+                  <label><input type="checkbox" name="add" value="bacon"> + Bacon Extra (R$ 5,00)</label>
+                  <label><input type="checkbox" name="add" value="cheddar"> + Cheddar Cremoso (R$ 4,00)</label>
+                  <label><input type="checkbox" name="add" value="cebola"> + Cebola Caramelizada (R$ 3,50)</label>
+                  <label><input type="checkbox" name="add" value="maionese"> + Maionese da Casa (Grátis)</label>
+                </div>
+                <button type="submit" class="btn-principal">Finalizar Pedido</button>
+              </form>
+            </details>
+          </div>
+        </article>
 
-      <h3>Nossos Diferenciais</h3>
-      <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
-        <li>Blend exclusivo de carnes frescas moídas diariamente</li>
-        <li>Pão brioche artesanal selado na chapa</li>
-        <li>Molhos defumados feitos na casa</li>
-      </ul>
+        <!-- Produto 2 -->
+        <article class="card-produto">
+          <div>
+            <img src="assets/images/imagem.jpg" alt="Double Smash Crispy">
+            <h3>Double Smash Crispy</h3>
+            <p>Dois burgers smash 90g prensados na chapa, queijo prato duplo, picles e molho especial.</p>
+          </div>
+          <div>
+            <span class="preco">R$ 29,90</span>
+            <details class="opcoes-lanche">
+              <summary>Comprar / Personalizar</summary>
+              <form action="carrinho.html" method="GET">
+                <div class="lista-adicionais">
+                  <strong>Escolha os adicionais:</strong>
+                  <label><input type="checkbox" name="add" value="carne"> + Hambúrguer Extra (R$ 8,00)</label>
+                  <label><input type="checkbox" name="add" value="bacon"> + Bacon Extra (R$ 5,00)</label>
+                  <label><input type="checkbox" name="add" value="picles"> + Picles Extra (R$ 2,50)</label>
+                </div>
+                <button type="submit" class="btn-principal">Finalizar Pedido</button>
+              </form>
+            </details>
+          </div>
+        </article>
 
-      <h3>Horários de Funcionamento</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Dia da Semana</th>
-            <th>Horário</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Terça a Quinta</td>
-            <td>18h00 às 23h00</td>
-          </tr>
-          <tr>
-            <td>Sexta a Domingo</td>
-            <td>18h00 às 00h30</td>
-          </tr>
-        </tbody>
-      </table>
+        <!-- Produto 3 -->
+        <article class="card-produto">
+          <div>
+            <img src="assets/images/imagem.jpg" alt="Chicken BBQ Special">
+            <h3>Chicken BBQ Special</h3>
+            <p>Filé de sobrecoxa empanado crocante, queijo mussarela, alface americana e molho barbecue.</p>
+          </div>
+          <div>
+            <span class="preco">R$ 27,90</span>
+            <details class="opcoes-lanche">
+              <summary>Comprar / Personalizar</summary>
+              <form action="carrinho.html" method="GET">
+                <div class="lista-adicionais">
+                  <strong>Escolha os adicionais:</strong>
+                  <label><input type="checkbox" name="add" value="bacon"> + Bacon Extra (R$ 5,00)</label>
+                  <label><input type="checkbox" name="add" value="catupiry"> + Catupiry Original (R$ 5,00)</label>
+                  <label><input type="checkbox" name="add" value="bbq"> + Molho BBQ Extra (R$ 2,00)</label>
+                </div>
+                <button type="submit" class="btn-principal">Finalizar Pedido</button>
+              </form>
+            </details>
+          </div>
+        </article>
 
-      <p>
-        Conheça mais sobre a cultura do churrasco americano no 
-        <a href="https://www.seriouseats.com" target="_blank" rel="noopener noreferrer" style="color: #ff9f1c;">Serious Eats</a>.
-      </p>
-    </section>
-
-    <!-- Seção 2: Mídia com Fallback (Aula 04) -->
-    <section id="preparo" class="secao-card">
-      <h2>Bastidores da Chapa</h2>
-      <!-- preload="metadata" escolhido pois o vídeo está abaixo da dobra, carregando apenas duração e dimensões sem gastar banda desnecessária (Aula 04) -->
-      <video controls preload="metadata" poster="assets/images/burger.jpg" style="width: 100%; border-radius: 8px;">
-        <source src="assets/media/preparo.webm" type="video/webm">
-        <source src="assets/media/preparo.mp4" type="video/mp4">
-        Seu navegador não suporta a reprodução de vídeos HTML5.
-      </video>
-    </section>
-
-    <!-- Seção 3: Cardápio Interativo (Aulas 11 e 12) -->
-    <section id="cardapio" class="secao-card">
-      <h2>Nosso Cardápio Interativo</h2>
-
-      <div class="ferramentas">
-        <div class="campo" style="margin-bottom: 0;">
-          <label for="campo-busca">Buscar hambúrguer:</label>
-          <input type="search" id="campo-busca" placeholder="Ex: Smash, Bacon..." autocomplete="off">
-        </div>
-
-        <div class="campo" style="margin-bottom: 0;">
-          <label for="filtro-categoria">Categoria:</label>
-          <select id="filtro-categoria">
-            <option value="">Todas</option>
-            <option value="Clássico">Clássico</option>
-            <option value="Smash">Smash</option>
-            <option value="Frango">Frango</option>
-            <option value="Vegetariano">Vegetariano</option>
-          </select>
-        </div>
-
-        <button type="button" id="btn-filtro-selecionados" class="btn-controle" aria-pressed="false">
-          Só Selecionados
-        </button>
       </div>
-
-      <!-- Resumo atualizado dinamicamente (Aulas 11 e 12) -->
-      <p id="resumo-pedido" class="painel-resumo" aria-live="polite"></p>
-
-      <!-- Lista desenhada via JS -->
-      <ul id="lista-cardapio" class="grade-burgers"></ul>
-
-      <!-- Controle com aria-expanded + Escape (Aula 12) -->
-      <button type="button" id="btn-abrir-cadastro" class="btn-controle" aria-expanded="false" aria-controls="form-novo-burger">
-        + Sugerir Novo Hambúrguer
-      </button>
-
-      <form id="form-novo-burger" hidden style="margin-top: 1rem;">
-        <fieldset>
-          <legend>Novo Hambúrguer (Esc para fechar)</legend>
-          <div class="campo">
-            <label for="novo-nome">Nome do Hambúrguer:</label>
-            <input type="text" id="novo-nome" placeholder="Ex: Monster Cheddar" required>
-          </div>
-          <div class="campo">
-            <label for="nova-categoria">Categoria:</label>
-            <select id="nova-categoria">
-              <option value="Clássico">Clássico</option>
-              <option value="Smash">Smash</option>
-              <option value="Frango">Frango</option>
-              <option value="Vegetariano">Vegetariano</option>
-            </select>
-          </div>
-          <div class="campo">
-            <label for="novo-preco">Preço (R$):</label>
-            <input type="number" id="novo-preco" step="0.50" min="10" value="32.00" required>
-          </div>
-          <button type="submit" class="botao">Adicionar ao Cardápio</button>
-        </fieldset>
-      </form>
-    </section>
-
-    <!-- Seção 4: Formulário Semântico (Aula 03) -->
-    <section id="pedido" class="secao-card">
-      <h2>Finalizar Pedido / Reserva</h2>
-      <form action="#" method="POST">
-        <fieldset>
-          <legend>Dados do Cliente</legend>
-
-          <div class="campo">
-            <label for="nome-cliente">Nome do Cliente:</label>
-            <input type="text" id="nome-cliente" name="nome" placeholder="Ex: João Silva" required>
-          </div>
-
-          <div class="campo">
-            <label for="email-cliente">E-mail para Confirmação:</label>
-            <input type="email" id="email-cliente" name="email" placeholder="cliente@email.com" required>
-          </div>
-
-          <div class="campo">
-            <label for="telefone-cliente">WhatsApp (DDD + Número):</label>
-            <input type="tel" id="telefone-cliente" name="telefone" pattern="[0-9]{11}" placeholder="11999998888">
-          </div>
-
-          <div class="campo">
-            <label for="qtd-burgers">Quantidade de Pessoas (Reserva):</label>
-            <input type="number" id="qtd-burgers" name="quantidade" min="1" max="15" value="2">
-          </div>
-
-          <fieldset>
-            <legend>Forma de Atendimento:</legend>
-            <div class="grupo-radio">
-              <label for="tipo-delivery" class="opcao-radio">
-                <input type="radio" id="tipo-delivery" name="entrega" value="delivery" checked>
-                Delivery (Entrega)
-              </label>
-              <label for="tipo-retirada" class="opcao-radio">
-                <input type="radio" id="tipo-retirada" name="entrega" value="retirada">
-                Retirar no Balcão
-              </label>
-            </div>
-          </fieldset>
-        </fieldset>
-        <button type="submit" class="botao">Confirmar Pedido 🍔</button>
-      </form>
     </section>
   </main>
 

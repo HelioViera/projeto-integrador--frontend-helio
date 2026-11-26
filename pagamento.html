@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burger Craft - Pagamento</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html" class="logo">🍔 Burger Craft</a></h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Cardápio</a></li>
+        <li><a href="carrinho.html">Carrinho</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Finalizar Pagamento</h2>
+
+      <form action="index.html" method="GET">
+        <fieldset>
+          <legend>Dados do Cliente e Entrega</legend>
+
+          <div class="campo">
+            <label for="nome-cliente">Nome Completo:</label>
+            <input type="text" id="nome-cliente" name="nome" placeholder="Ex: João Silva" required>
+          </div>
+
+          <div class="campo">
+            <label for="telefone-cliente">WhatsApp (DDD + Número):</label>
+            <input type="tel" id="telefone-cliente" name="telefone" pattern="[0-9]{11}" placeholder="11999998888" required>
+          </div>
+
+          <div class="campo">
+            <label for="endereco-cliente">Endereço de Entrega:</label>
+            <input type="text" id="endereco-cliente" name="endereco" placeholder="Rua, número, bairro e complemento" required>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Forma de Pagamento</legend>
+
+          <div class="campo">
+            <label for="metodo-pagamento">Selecione como deseja pagar:</label>
+            <select id="metodo-pagamento" name="pagamento" required>
+              <option value="pix">PIX (Aprovação imediata)</option>
+              <option value="credito">Cartão de Crédito na Entrega</option>
+              <option value="debito">Cartão de Débito na Entrega</option>
+              <option value="dinheiro">Dinheiro (Informar troco nas observações)</option>
+            </select>
+          </div>
+        </fieldset>
+
+        <div class="acoes-rodape">
+          <a href="carrinho.html" class="btn-secundario">Voltar ao Carrinho</a>
+          <button type="submit" class="btn-principal">Confirmar e Pagar (R$ 37,90)</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 - Burger Craft Artesanal. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>

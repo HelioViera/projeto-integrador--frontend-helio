@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Burger Craft - Seu Carrinho</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1><a href="index.html" class="logo">🍔 Burger Craft</a></h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Cardápio</a></li>
+        <li><a href="carrinho.html" class="ativo">Carrinho</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Resumo do Pedido (Carrinho)</h2>
+
+      <!-- Simulação visual do item selecionado -->
+      <div class="item-carrinho">
+        <div>
+          <strong>Classic Burger</strong>
+          <p style="font-size: 0.85rem; color: #aaa;">Adicionais: Bacon Extra, Maionese da Casa</p>
+        </div>
+        <span>R$ 37,90</span>
+      </div>
+
+      <div class="total-carrinho">
+        <span>Total:</span>
+        <span>R$ 37,90</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Detalhes da Entrega</h2>
+      <form action="pagamento.html" method="GET">
+        <fieldset>
+          <legend>Opções do Pedido</legend>
+
+          <div class="campo">
+            <label for="qtd-burgers">Quantidade:</label>
+            <input type="number" id="qtd-burgers" name="quantidade" min="1" max="15" value="1">
+          </div>
+
+          <div class="campo">
+            <label for="obs-pedido">Observações para a cozinha:</label>
+            <input type="text" id="obs-pedido" name="observacao" placeholder="Ex: Ponto da carne ao ponto, sem cebola...">
+          </div>
+
+          <div class="grupo-radio">
+            <label for="tipo-delivery" class="opcao-radio">
+              <input type="radio" id="tipo-delivery" name="entrega" value="delivery" checked>
+              Delivery (Entrega)
+            </label>
+            <label for="tipo-retirada" class="opcao-radio">
+              <input type="radio" id="tipo-retirada" name="entrega" value="retirada">
+              Retirar no Balcão
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="acoes-rodape">
+          <a href="index.html" class="btn-secundario">Continuar Comprando</a>
+          <button type="submit" class="btn-principal">Finalizar Compra</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 - Burger Craft Artesanal. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
